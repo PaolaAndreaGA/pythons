@@ -10,7 +10,7 @@
  */
 void prompt(void)
 {
-	char *prompt = "$: ";
+	char *prompt = "$ ";
 
 	/**
 	 * isatty(): Determines if a file descriptor, fildes,
