@@ -1,0 +1,47 @@
+.\" Manpage for shell
+.TH man 1 "26 August 2021" "1.0" "simple_shell man page"
+.SH NAME
+shell \- POSIX-compliant command interpreter
+
+.SH SYNOPSIS
+\ ./hsh
+[No more options]
+
+.SH DESCRIPTION
+Shell is a program that takes command input typed from the user's keyboard and passes them to the machine to execute through the ker\
+nel. It also checks if the user's command input are correct, This is a performance-based version of some of the shell functions.
+
+.SH OPTIONS
+Don´t have any options
+
+.SH RETURN
+If the process is successful, it returns 1
+
+.SH SEE ALSO
+bash(1), dash(1), ksh(1), tcsh(1), zsh(1)
+
+.SH BUGS
+[No known bugs yet]
+
+.SH EXAMPLES
+
+-Exit
+
+Usage: Exit the Shell
+
+Command:
+.B exit
+
+-Env
+
+Usage: Print the enviroment
+
+Command:
+.B env
+
+.SH AUTHORS
+Alejandra Hincapie Cortes.
+
+Angelica Estefania Russi Rodriguez.
+
+Paola Andrea Garcia Altamirano.
