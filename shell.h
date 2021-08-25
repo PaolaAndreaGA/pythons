@@ -1,62 +1,33 @@
-#ifndef _SHELL_
-#define _SHELL_
-#include <dirent.h>
-#include <errno.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef _SHELL_H_
+#define _SHELL_H_
+
 #include <string.h>
+#include <stdio.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <unistd.h>
-
-/* global constants */
-#define TOKENS_BUFFER_SIZE 64
-#define LINE_SIZE 1024
-#define TOKEN_DELIMITERS " \t\r\n\a"
-
+#include <sys/stat.h>
+#include <stdlib.h>
 extern char **environ;
+extern int dircount;
+#define DELIM " \n\a\t"
 
-/**
- * struct builtins - Has builtins and associated funcs
- * @argument: Builtins name
- * @builtin: Mathcing builtin func
- */
-typedef struct builtins
-{
-	char *argument;
-	void (*builtin)(char **arguments, char *line_input, char **environment);
-
-} builtins_t;
-
-/* start function -> prompt.c */
-void prompt(void);
-char *_getline(void);
-
-/* function of support -support.c */
-int _strcmp(char *s1, char *s2);
+void env(char **env);
 int _strlen(char *s);
-char *_getenv(char *env);
-char *_strstr(char *haystack, char *needle);
-char **tokenization(char *line);
+int _strcmp(char *s1, char *s2);
+char *_strdup(char *str);
+void prompt(void);
+char *get_line(void);
+char **split_line(char *line);
+char *get_env(char **env);
+char *pathCat(char *dir, char *av);
+char **dirTok(char **env);
 
-/* builtins -> checker.c */
-int checker(char *check, char **args);
-int check_for_builtins(char **args, char *line, char **env);
-int builtins_checker(char **args);
-
-/*exe.c  */
-int execute(char **args, char *line, char **env, int flow);
-int launch_prog(char **args);
-
-/* PATH function -> path.c */
-char *get_cwd(char *filename, char *er);
-char *find_path(char *args, char *tmp, char *er);
-char *save_path(char *tmp, char *path);
-char *read_dir(char *er, struct dirent *s, char *fi, int l, char *p, char *t);
-
-/* function of the shell -> mandatory.c  */
-void exit_shell(char **args, char *line, char **env);
-void env_shell(char **args, char *line, char **env);
-
+void looper(char **env);
+char *checkPath(char **dir, char *command);
+int execute(char *fullPath, char **command);
+int exitme(char **command);
+int cd(char **command);
+int printenv(char **command);
+int checkBuiltins(char *combine, char **command);
 #endif
