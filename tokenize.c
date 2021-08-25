@@ -1,34 +1,41 @@
-#include "holberton.h"
-
+#include "shell.h"
 /**
- * tokenize - Parses the arguments into tokens.
- *
- * @buffer: Entered arguments.
- *
- * Return: Array of tokens.
+ * tokenize - this function separate the string using a designed delimiter
+ * @data: a pointer to the program's data
+ * Return: an array of the different parts of the string
  */
-
-char **tokenize(char *buffer)
+void tokenize(data_of_program *data)
 {
-	char *token = NULL;
-	char **ar = NULL;
-	int i = 0, size = 0;
+	char *delimiter = " \t";
+	int i, j, counter = 2, length;
 
-	while (buffer[size] != '\0')
-		size++;
-
-	ar = malloc(sizeof(char *) * size);
-
-	i = 0;
-
-	token = strtok(buffer, DELIM);
-	ar[i] = token;
-
-	for (i = 1; token != NULL; i++)
+	length = str_length(data->input_line);
+	if (length)
 	{
-		token = strtok(NULL, DELIM);
-		ar[i] = token;
+		if (data->input_line[length - 1] == '\n')
+			data->input_line[length - 1] = '\0';
 	}
 
-	return (ar);
+	for (i = 0; data->input_line[i]; i++)
+	{
+		for (j = 0; delimiter[j]; j++)
+		{
+			if (data->input_line[i] == delimiter[j])
+				counter++;
+		}
+	}
+
+	data->tokens = malloc(counter * sizeof(char *));
+	if (data->tokens == NULL)
+	{
+		perror(data->program_name);
+		exit(errno);
+	}
+	i = 0;
+	data->tokens[i] = str_duplicate(_strtok(data->input_line, delimiter));
+	data->command_name = str_duplicate(data->tokens[0]);
+	while (data->tokens[i++])
+	{
+		data->tokens[i] = str_duplicate(_strtok(NULL, delimiter));
+	}
 }
