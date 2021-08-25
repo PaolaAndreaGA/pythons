@@ -173,5 +173,5 @@ File | Description
 ---
 ## Authors
 * **Paola García** - [PaolaAndreaGA](https://github.com/PaolaAndreaGA)
-* **Etefanía Russi** - [angelikrussi](https://github.com/angelikrussi)
+* **Estefanía Russi** - [angelikrussi](https://github.com/angelikrussi)
 * **Alejandra Hincapie** - [lahincapie](https://github.com/lahincapie)
