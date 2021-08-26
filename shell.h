@@ -32,6 +32,7 @@ typedef struct builtins
 /* start function -> prompt.c */
 void prompt(void);
 char *_getline(void);
+int shell(int argument_count, char **argument_vector, char **environment);
 
 /* function of support -support.c */
 int _strcmp(char *s1, char *s2);
