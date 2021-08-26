@@ -49,11 +49,9 @@ int launch_prog(char **args)
 	}
 	else
 	{
-		do
-		{
-	wpid = waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && WIFSIGNALED(status))
-
+		do {
+			wpid = waitpid(pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && WIFSIGNALED(status));
 	}
 	(void)wpid;
 	return (1);
