@@ -8,7 +8,7 @@
  * Return: return 0
  */
 
-int main(int argument_count, char **argument_vector, char **environment)
+int shell(int argument_count, char **argument_vector, char **environment)
 {
 	char **argument_array, *line_input, *file_name, *tmp_size = NULL;
 	char *error = "Error";
