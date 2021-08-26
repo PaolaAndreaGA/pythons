@@ -14,8 +14,7 @@ int main(int argument_count, char **argument_vector, char **environment)
 	char *error = "Error";
 	int route, status = 1;
 
-	while (status)
-	{
+	do {
 		prompt();
 		line_input = _getline();
 		if (_strlen(line_input) > 1)
@@ -39,7 +38,7 @@ int main(int argument_count, char **argument_vector, char **environment)
 		}
 		free(line_input);
 
-	}
+	} while (status);
 	if (!argument_count)
 		(void)argument_count;
 	if (!argument_vector)
